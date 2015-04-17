@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="com.vjia.TextIndexer"
+    import="com.vjia.indexer.JavaFileIndexer"
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,7 +9,7 @@
 <title>JSP Index</title>
 </head>
 <%
-TextIndexer tindexer = new TextIndexer();
+JavaFileIndexer tindexer = new JavaFileIndexer();
 tindexer.index();
 
 %>

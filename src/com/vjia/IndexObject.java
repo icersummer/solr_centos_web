@@ -3,7 +3,7 @@ package com.vjia;
 import java.util.Date;
 import java.util.Hashtable;
 
-public abstract class IndexObject {
+public class IndexObject {
 	
 	private static final String CLASSNAME = IndexObject.class.getName();
 	

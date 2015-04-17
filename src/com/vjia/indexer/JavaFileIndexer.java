@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 
@@ -42,12 +44,19 @@ public class JavaFileIndexer {
 					debug("current line = %s", line, line);
 					if(line.trim().length() == 0)	continue;
 					line = sanitize(line);
-					body.append(line);
+					body.append(line).append(" ");
 				}
 				
 				// construct the JavaFile Object
 				JavaFile entity = new JavaFile();
-				
+				entity.name=filename;
+				entity.fileName=fullFilename;
+				Date lastModified = new Date(textFile.lastModified());
+				entity.createTimestamp=lastModified;
+				entity.modifyTimestamp=lastModified;
+				entity.creator="administrator";
+				entity.modifier="administrator";
+				entity.body=body;
 				
 				RealIndexer indexer = new RealIndexer();
 				indexer.index(entity);
@@ -58,6 +67,9 @@ public class JavaFileIndexer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			// in test, only process 1 line
+//			if(true) return;
 		}
 	}
 
